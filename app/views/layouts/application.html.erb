@@ -12,6 +12,11 @@
 
   <body>
   <%= render "layouts/navigation" %>
+    <div class="container">
+      <div class="row">
+      <div class="col-lg-12">
+    <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
