@@ -19,6 +19,8 @@ class PlansController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @plan = Plan.find(params[:id])
+
   end
 
   # POST /products or /products.json
