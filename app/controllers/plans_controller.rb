@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_product, only: %i[ show edit update destroy ]
+  # before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
   def index
@@ -9,6 +9,7 @@ class PlansController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @plan = Plan.find(params[:id])
   end
 
   # GET /products/new
@@ -59,9 +60,9 @@ class PlansController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @plan = Plan.find(params[:id])
-    end
+    # def set_product
+    #   @plan = Plan.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def product_params
