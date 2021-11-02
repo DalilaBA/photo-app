@@ -17,8 +17,9 @@
       <ul class= "nav navbar-right">
         <% if current_user %>
          <li class="nav-item dropdown">
+         
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= (truncate(current_user.username, length: 25)).html_safe  %>
+         <%= image_tag current_user.avatar, width: "40px", class: "rounded-circle" %> <%= (truncate(current_user.username, length: 25)).html_safe  %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
          <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
