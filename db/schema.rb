@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_104801) do
+ActiveRecord::Schema.define(version: 2021_11_04_083206) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,20 +40,20 @@ ActiveRecord::Schema.define(version: 2021_11_02_104801) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_plans", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["plan_id"], name: "index_user_plans_on_plan_id"
-    t.index ["user_id"], name: "index_user_plans_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +75,5 @@ ActiveRecord::Schema.define(version: 2021_11_02_104801) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "user_plans", "plans"
-  add_foreign_key "user_plans", "users"
+  add_foreign_key "images", "users"
 end

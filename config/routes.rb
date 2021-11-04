@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   resources :plans
   post "checkout/create", to: "checkout#create"
   devise_for :users

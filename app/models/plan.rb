@@ -1,6 +1,5 @@
 class Plan < ApplicationRecord
-  has_many :user_plans
-  has_many :users, through: :user_plans
+  belongs_to :user
 
   validates :name, :price, presence: true
 end
